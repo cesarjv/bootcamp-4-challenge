@@ -1,5 +1,6 @@
 FROM ubuntu:18.04
 WORKDIR /home/node/app
+# Update all
 RUN apt-get update
 # We directly answer the questions asked using the printf statement
 RUN apt-get install curl -y
