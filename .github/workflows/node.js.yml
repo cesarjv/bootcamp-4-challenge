@@ -4,6 +4,10 @@ on:
   push:
     branches: [ "master" ]
 
+env:
+  REGISTRY: justoville29
+  IMAGE_NAME: bootcamp-reto4-nodejs 
+
 jobs:
 
   init:
@@ -19,3 +23,23 @@ jobs:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
     - run: npm install
+
+  build-docker:
+    runs-on: ubuntu-latest
+    needs: init
+    steps:
+    - uses: actions/checkout@v3
+    - name: Set up QEMU
+      uses: docker/setup-qemu-action@v2
+    - name: Set up Docker Buildx
+      uses: docker/setup-buildx-action@v2
+    - name: Login to DockerHub
+      uses: docker/login-action@v2
+      with:
+        username: ${{ secrets.DOCKERHUB_USERNAME }}
+        password: ${{ secrets.DOCKERHUB_TOKEN }}
+    - name: Build and push
+      uses: docker/build-push-action@v3
+      with:
+        push: true
+        tags: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest
