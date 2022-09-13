@@ -23,6 +23,21 @@ Automatiza el proceso de creación de la imagen de Docker y su subida a Docker H
 
 Se debe crear una aplicación en Heroku y desplegarla allí usando github actions.
 
+
+## Solucion Reto 4
+
+### Imagen DockerHub
+
+[Imagen](img/imagen1.png)
+
+### Imagen Flujo Github
+
+[Flujo](img/imagen2.png)
+
+### Despliegue Heroku
+
+[Heroku](img/imagen3.png)
+
 ### Resultado:
 
 ![desafio 1](./assets/1.png)
